@@ -77,7 +77,3 @@ class OrderItem(models.Model):
     @property
     def total_price(self):
         return self.price * self.quantity
-
-from django.db import models
-
-# Create your models here.
