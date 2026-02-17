@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Категории{% endblock %}
+
+{% block content %}
+  <h1>Категории</h1>
+  <div class="row">
+    {% for category in categories %}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+            </h5>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>Пока нет категорий.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+

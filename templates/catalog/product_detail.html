@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-5">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+      {% endif %}
+    </div>
+    <div class="col-md-7">
+      <h1>{{ product.name }}</h1>
+      <p>
+        {% if product.discount_price %}
+          <span class="text-muted text-decoration-line-through">{{ product.price }} ₽</span>
+          <span class="fw-bold fs-4 ms-2">{{ product.discount_price }} ₽</span>
+        {% else %}
+          <span class="fw-bold fs-4">{{ product.price }} ₽</span>
+        {% endif %}
+      </p>
+      <p>{{ product.description }}</p>
+      <a href="{% url 'cart:add' product.id %}" class="btn btn-primary btn-lg mb-3">Добавить в корзину</a>
+      <div>
+        <a href="{% url 'catalog:category_detail' product.category.slug %}">← Вернуться к категории</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
